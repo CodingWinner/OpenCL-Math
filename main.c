@@ -1,8 +1,24 @@
+/*!
+    @file main.c
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <CL/cl.h>
 #include <linearalgebra.h>
 
+/*!
+    @brief Contains the source code for all the kernels that run on the gpu
+
+    @details
+    This kernel_code string variable has all the code required to perform the operations on the gpu.
+    Each kernel function is specified by a __kernel tag in the beginning and ends with a line that only has a newline character.
+    The __kernel tag indicates that this runs on a specific device. The ID for that device is stored in @ref gpu.device.
+    Void is the return type which should stay void since you're not returning to anything if using a gpu kernel as in this situation.
+
+    @note
+    This variable should only be used for customizing/improving this code
+*/
 const char *kernel_code =
     "__kernel void addShapesF(__global const float *s1, __global const float *s2,\n"
     "                         __global float *s3, const unsigned int n)\n"
