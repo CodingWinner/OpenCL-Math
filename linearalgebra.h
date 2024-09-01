@@ -25,7 +25,6 @@
 */
 
 /*!
-    @cond
     @brief %GPU %Kernels to perform operations
     @details
     A list of the kernels that work on the gpu to perform operations for vectors and matrices. You never need to use this.
@@ -75,9 +74,6 @@ typedef struct
     cl_program program;
     cl_int err;
 } GPU;
-/*!
-    @endcond
-*/
 
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
