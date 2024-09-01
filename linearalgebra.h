@@ -18,6 +18,8 @@
     @section vectors Vector Operations
 
     @section matrices Matrix Operations
+
+    @section kernels Operation Kernels
 */
 
 /*!
