@@ -79,6 +79,28 @@ typedef struct
     @param c This is the number of columns in shapes 1, 2, and 3
 
     @fn void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
+    @brief Uses the cross operation (x) on two shapes and stores the result in the 3rd shape
+
+    @details
+    This function can be used to cross 2 matrices or multiply 2 vectors
+
+    @param base_s1 This is the address to the first shape to be crossed or multiplied
+    @param base_s2 This is the address to the second shape to be crossed or multiplied
+    @param base_s3 This is the address to the third shape which will store the cross product or regular product of the two shapes
+    @param r This is the number of rows in shapes 1, 2, and 3
+    @param c This is the number of columns in shapes 1, 2, and 3
+
+    @fn void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
+    @brief Divides two shapes and stores the result in the third shape
+
+    @details
+    This function takes in 2 shapes and divides them into the third shape
+
+    @param base_s1 This is the address to the first shape which is the dividend
+    @param base_s2 This is the address to the second shape which is the divisor
+    @param base_s3 This is the address to the third shape which will contain the quotient
+    @param r This is the number of rows in shapes 1, 2, and 3
+    @param c This is the number of columns in shapes 1, 2, and 3
     @}
 */
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
