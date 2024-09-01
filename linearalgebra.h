@@ -2,6 +2,34 @@
     @author Ekansh Jain
     @version 0.1.0
     @file Header file for vector and matrix operations in plain C.
+
+    @mainpage Linear Algebra for C Documentation
+
+    @details
+    This projects goal was to create some support for using vectors and matrices in c for things like graphics and A.I.
+    This is a very basic version custom fit to my device, but can be customized easily using the documentation as a guide.
+    It uses OpenCL for parallel processing on the %GPU in order to optimize.
+
+    @ref Contents "Table of Contents"
+*/
+
+/*!
+    @page Contents Table of Contents
+
+    @tableofcontents
+
+    @section general General
+    @section basics Basic Functions
+    @ref FOperations "General Float Operations"
+    @subsection functions Function List
+    @ref addShapesF()
+
+    @ref subtractShapesF()
+
+    @ref crossShapesF()
+
+    @ref divideShapesF()
+    @section matrix Matrix Functions
 */
 
 typedef struct
@@ -50,6 +78,9 @@ typedef struct
 
     @details
     All the functions in this group are almost the same except for the fact that they have different operations
+
+    @note
+    There is no error checking for any of these functions. There will be unexpected results if the given params are not correct
 
     @ingroup FOperations
     @{
