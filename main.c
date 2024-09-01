@@ -85,46 +85,6 @@ const char *kernel_code =
 }\n\
 ";
 
-typedef struct
-{
-    cl_kernel addFKernel;
-    cl_kernel subtractFKernel;
-    cl_kernel crossFKernel;
-    cl_kernel divideFKernel;
-    cl_kernel dotFKernel;
-    cl_kernel matVecFkernel;
-} Kernels;
-typedef struct
-{
-    cl_event addFEvent;
-    cl_event subtractFEvent;
-    cl_event crossFEvent;
-    cl_event divideFEvent;
-    cl_event dotFEvent;
-    cl_event matVecFEvent;
-    cl_event s1Write;
-    cl_event s2Write;
-    cl_event s3Write;
-} Events;
-typedef struct
-{
-    cl_mem s1;
-    cl_mem s2;
-    cl_mem s3;
-} Buffers;
-typedef struct
-{
-    Kernels kernels;
-    Events events;
-    Buffers buffers;
-    cl_platform_id platform;
-    cl_context context;
-    cl_device_id device;
-    cl_command_queue queue;
-    cl_program program;
-    cl_int err;
-} GPU;
-
 GPU gpu;
 
 void checkError()
@@ -135,22 +95,6 @@ void checkError()
         exit(1);
     }
 }
-
-/*
-    void addShapesF(float **base_s1,
-        float **base_s2,
-        float **base_s3,
-        unsigned int r,
-        unsigned int c)
-
-    base_s1: Address of shape1
-    base_s2: Address of shape2
-    base_s3: Address of shape3
-    r: Rows in shape1, shape2, and shape3
-    c: Columns in shape1, shape2, and shape3
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct
-*/
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
     const size_t old_size = sizeof(float) * r * c;
@@ -283,22 +227,6 @@ void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int 
     *base_s2 = realloc(*base_s2, old_size);
     *base_s3 = realloc(*base_s3, old_size);
 }
-
-/*
-    void subtractShapesF(float **base_s1,
-        float **base_s2,
-        float **base_s3,
-        unsigned int r,
-        unsigned int c)
-
-    base_s1: Address of shape1
-    base_s2: Address of shape2
-    base_s3: Address of shape3
-    r: Rows in shape1, shape2, and shape3
-    c: Columns in shape1, shape2, and shape3
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct
-*/
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
     const size_t old_size = sizeof(float) * r * c;
@@ -430,23 +358,6 @@ void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned
     *base_s2 = realloc(*base_s2, old_size);
     *base_s3 = realloc(*base_s3, old_size);
 }
-
-/*
-    void crossShapesF(float **base_s1,
-        float **base_s2,
-        float **base_s3,
-        unsigned int r,
-        unsigned int c)
-
-    base_s1: Address of shape1
-    base_s2: Address of shape2
-    base_s3: Address of shape3
-    r: Rows in shape1, shape2, and shape3
-    c: Columns in shape1, shape2, and shape3
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct. This
-    is also equivalent to multiplication of vectors for value 1 for r or c
-*/
 void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
     const size_t old_size = sizeof(float) * r * c;
@@ -578,22 +489,6 @@ void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned in
     *base_s2 = realloc(*base_s2, old_size);
     *base_s3 = realloc(*base_s3, old_size);
 }
-
-/*
-    void divideShapesF(float **base_s1,
-        float **base_s2,
-        float **base_s3,
-        unsigned int r,
-        unsigned int c)
-
-    base_s1: Address of shape1
-    base_s2: Address of shape2
-    base_s3: Address of shape3
-    r: Rows in shape1, shape2, and shape3
-    c: Columns in shape1, shape2, and shape3
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct
-*/
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
     const size_t old_size = sizeof(float) * r * c;
@@ -725,24 +620,6 @@ void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned i
     *base_s2 = realloc(*base_s2, old_size);
     *base_s3 = realloc(*base_s3, old_size);
 }
-
-/*
-    void dotMatricesF(const float *s1,
-        const float *s2,
-        const float *s3,
-        const unsigned int r,
-        const unsigned int c,
-        const unsigned int c2)
-
-    s1: shape 1
-    s2: shape 2
-    s3: shape 3
-    r: Rows in shape 1 and shape 3
-    c: Columns in shape 1 and rows in shape 2
-    c2: Columns in shapes 2 and 3
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct
-*/
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2)
 {
     const size_t size1 = sizeof(float) * r * c;
@@ -790,22 +667,6 @@ void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned in
     clReleaseMemObject(gpu.buffers.s2);
     clReleaseMemObject(gpu.buffers.s3);
 }
-
-/*
-    void matVecF(float **base_s1,
-        float **base_s2,
-        float **base_s3,
-        unsigned int r,
-        unsigned int c)
-
-    base_s1: address of the multiplying matrix 1
-    base_s2: address of the vector being multiplied 2
-    base_s3: address of the output vector 3
-    r: rows in the matrix and number of elements in the vectors
-    c: columns in the matrix
-
-    *Note: There is no error checking, make sure that all the dimensions of the 3 shapes are correct
-*/
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
     const size_t matrix_size = sizeof(float) * r * c;
@@ -834,14 +695,6 @@ void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, 
     clReleaseMemObject(gpu.buffers.s2);
     clReleaseMemObject(gpu.buffers.s3);
 }
-
-/*
-    float *createShapeF(const unsigned int n,
-    const float fill_val)
-
-    n: number of elements in the shape
-    fill_val: basic value to fill all values with
-*/
 float *createShapeF(const unsigned int n, const float fill_val)
 {
     size_t size = sizeof(float) * n;
@@ -852,10 +705,6 @@ float *createShapeF(const unsigned int n, const float fill_val)
     }
     return s1;
 }
-
-/*
-    Call before using any of the other functions
-*/
 void gpuInit()
 {
     gpu.err = clGetPlatformIDs(1, &gpu.platform, NULL);
@@ -871,10 +720,6 @@ void gpuInit()
     gpu.kernels.dotFKernel = clCreateKernel(gpu.program, "dotMatricesF", &gpu.err);
     gpu.kernels.matVecFkernel = clCreateKernel(gpu.program, "MatrixFMulVecF", &gpu.err);
 }
-
-/*
-    Call before ending the program
-*/
 void gpuClean()
 {
     clReleaseKernel(gpu.kernels.addFKernel);

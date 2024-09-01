@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.30.3)
 project("linearalgebra")
 
 set(CMAKE_C_STANDARD 11)
+set(ENABLED_LANGUAGES "English")
 
 #Executable part
 add_executable(${PROJECT_NAME} main.c)
