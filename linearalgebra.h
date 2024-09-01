@@ -30,6 +30,9 @@
 
     @ref divideShapesF()
     @section matrix Matrix Functions
+    @ref FMatrixOperations "Float Matrix Specific Operations"
+    @subsection functions Function List
+    @ref dotMatricesF()
 */
 
 typedef struct
@@ -133,11 +136,53 @@ typedef struct
     @param r This is the number of rows in shapes 1, 2, and 3
     @param c This is the number of columns in shapes 1, 2, and 3
     @}
+
+    @defgroup FMatrixOperations Float Matrix Specific Operations
+    @brief Operations that only exist for matrices
+
+    @note
+    There is no error checking in any of these functions. There will be unexpected results if the given params are not correct
+
+    @ingroup FMatrixOperations
+    @{
+    @fn dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2)
+    @brief Does the dot product of the first two matrices and stores in the third matrix
+
+    @details
+    Calculates the dot product of the first two matrices and stores it in the third matrix
+
+    @param s1 The first matrix to be used in the dot product
+    @param s2 The second matrix to be used in the dot product
+    @param s3 The output matrix
+    @param r The number of rows in \p s1 and \p s3
+    @param c The number of columns in \p s1 and number of rows in \p s2
+    @param c2 The number of columns in \p s2 and \p s3;
+
+    @}
 */
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+
+// /*!
+//     @fn dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2)
+//     @brief Does the dot product of the first two matrices and stores in the third matrix
+
+//     @details
+//     Calculates the dot product of the first two matrices and stores it in the third matrix
+
+//     @note
+//     There is no error checking in this function. There will be unexpected results if the given params are not correct
+
+//     @param s1 The first matrix to be used in the dot product
+//     @param s2 The second matrix to be used in the dot product
+//     @param s3 The output matrix
+//     @param r The number of rows in \p s1 and \p s3
+//     @param c The number of columns in \p s1 and number of rows in \p s2
+//     @param c2 The number of columns in \p s2 and \p s3;
+// */
+
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 float *createShapeF(const unsigned int n, const float fill_val);
