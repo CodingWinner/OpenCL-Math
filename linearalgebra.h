@@ -1,7 +1,7 @@
 /*!
     @author Ekansh Jain
     @version 0.1.0
-    @file Code for supporting operations between vectors and matrices in plain C
+    @file Header file for vector and matrix operations in plain C.
 */
 
 typedef struct
@@ -48,6 +48,9 @@ typedef struct
     @defgroup FOperations General Float Operations
     @brief Basic operations that work for float type matrices and vectors
 
+    @details
+    All the functions in this group are almost the same except for the fact that they have different operations
+
     @ingroup FOperations
     @{
 
@@ -59,7 +62,7 @@ typedef struct
 
     @param base_s1 This is the address to the first shape to be added
     @param base_s2 This is the address to the second shape to be added
-    @param base_s3 This is the address to the shape which will contain the sum of shapes at addresses \p base_s1 and \p base_s2
+    @param base_s3 This is the address to the shape which will contain the sum of the other 2 shapes
     @param r This is the number of rows in shapes 1, 2, and 3
     @param c This is the number of columns in shapes 1, 2, and 3
 
@@ -67,9 +70,15 @@ typedef struct
     @brief Subtracts 2 shapes and stores the difference in the third shape
 
     @details
-    This functions in 2 of the shapes with their rows and columns, then it outputs the difference of the shapes in the 3rd shape
+    This functions in 2 of the shapes with their rows and columns, then it outputs the difference of the shapes in the 3rd shape.
 
-    @param base_s1 This is the address to the first shape, it will be subtracted from
+    @param base_s1 This is the address to the first shape, it will be the shape subtracted from
+    @param base_s2 This is the shape that will be subtracted from the first shape
+    @param base_s3 This is the shape that will contain the difference of the other two shapes
+    @param r This is the number of rows in shapes 1, 2, and 3
+    @param c This is the number of columns in shapes 1, 2, and 3
+
+    @fn void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
     @}
 */
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
