@@ -1,3 +1,29 @@
+/*!
+    @mainpage Linear Algebra For C
+
+    @date 9/1/2024
+    @author Ekansh Jain
+
+    @details
+    Basic functions to use matrices and vectors in C for things like A.I. and graphics. This project uses OpenCL for maximum efficiency
+*/
+
+/*!
+    @page contents Table of Contents
+
+    @tableofcontents Table of Contents
+
+    @section general General
+
+    @section vectors Vector Operations
+
+    @section matrices Matrix Operations
+*/
+
+/*!
+    @page reference Function Reference
+*/
+
 typedef struct
 {
     cl_kernel addFKernel;
