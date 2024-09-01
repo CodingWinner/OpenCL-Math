@@ -69,6 +69,7 @@ typedef struct
     Buffers buffers;
     cl_platform_id platform;
     cl_context context;
+    /*! @brief Contains the device ID, in this case the id of the GPU to use in OpenCL functions*/
     cl_device_id device;
     cl_command_queue queue;
     cl_program program;
