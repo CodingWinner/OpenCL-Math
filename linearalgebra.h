@@ -6,6 +6,8 @@
 
     @details
     Basic functions to use matrices and vectors in C for things like A.I. and graphics. This project uses OpenCL for maximum efficiency
+
+    @file linearalgebra.h
 */
 
 /*!
