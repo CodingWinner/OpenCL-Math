@@ -13,7 +13,7 @@
     @details
     This kernel_code string variable has all the code required to perform the operations on the gpu.
     Each kernel function is specified by a __kernel tag in the beginning and ends with a line that only has a newline character.
-    The __kernel tag indicates that this runs on a specific device. The ID for that device is stored in @ref gpu.device.
+    The __kernel tag indicates that this runs on a specific device. The ID for that device is stored in @ref GPU.device.
     Void is the return type which should stay void since you're not returning to anything if using a gpu kernel as in this situation.
 
     @note
@@ -101,6 +101,11 @@ const char *kernel_code =
 }\n\
 ";
 
+/*!
+    @brief The variable used to access GPU information like the kernels or deviceID
+
+    @note This should only be used when creating your own gpu kernel function
+*/
 GPU gpu;
 
 void checkError()
