@@ -11,9 +11,7 @@
     It uses OpenCL for parallel processing on the %GPU in order to optimize.
 
     @ref Contents "Table of Contents"
-*/
 
-/*!
     @page Contents Table of Contents
 
     @tableofcontents
@@ -29,53 +27,9 @@
     @ref crossShapesF()
 
     @ref divideShapesF()
-    @section matrix Matrix Functions
-    @ref FMatrixOperations "Float Matrix Specific Operations"
-    @subsection functions Function List
+    @section uncategorized Uncategorized Functions
     @ref dotMatricesF()
-*/
 
-typedef struct
-{
-    cl_kernel addFKernel;
-    cl_kernel subtractFKernel;
-    cl_kernel crossFKernel;
-    cl_kernel divideFKernel;
-    cl_kernel dotFKernel;
-    cl_kernel matVecFkernel;
-} Kernels;
-typedef struct
-{
-    cl_event addFEvent;
-    cl_event subtractFEvent;
-    cl_event crossFEvent;
-    cl_event divideFEvent;
-    cl_event dotFEvent;
-    cl_event matVecFEvent;
-    cl_event s1Write;
-    cl_event s2Write;
-    cl_event s3Write;
-} Events;
-typedef struct
-{
-    cl_mem s1;
-    cl_mem s2;
-    cl_mem s3;
-} Buffers;
-typedef struct
-{
-    Kernels kernels;
-    Events events;
-    Buffers buffers;
-    cl_platform_id platform;
-    cl_context context;
-    cl_device_id device;
-    cl_command_queue queue;
-    cl_program program;
-    cl_int err;
-} GPU;
-
-/*!
     @defgroup FOperations General Float Operations
     @brief Basic operations that work for float type matrices and vectors
 
@@ -137,19 +91,78 @@ typedef struct
     @param c This is the number of columns in shapes 1, 2, and 3
     @}
 
-    @defgroup FMatrixOperations Float Matrix Specific Operations
-    @brief Operations that only exist for matrices
+    // @fn dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2)
+    // @brief Does the dot product of the first two matrices and stores in the third matrix
 
-    @note
-    There is no error checking in any of these functions. There will be unexpected results if the given params are not correct
+    // @details
+    // Calculates the dot product of the first two matrices and stores it in the third matrix
 
-    @ingroup FMatrixOperations
-    @{
-    @fn dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2)
+    // @note
+    // There is no error checking in any of this function. There will be unexpected results if the given params are not correct
+
+    // @param s1 The first matrix to be used in the dot product
+    // @param s2 The second matrix to be used in the dot product
+    // @param s3 The output matrix
+    // @param r The number of rows in \p s1 and \p s3
+    // @param c The number of columns in \p s1 and number of rows in \p s2
+    // @param c2 The number of columns in \p s2 and \p s3;
+*/
+
+typedef struct
+{
+    cl_kernel addFKernel;
+    cl_kernel subtractFKernel;
+    cl_kernel crossFKernel;
+    cl_kernel divideFKernel;
+    cl_kernel dotFKernel;
+    cl_kernel matVecFkernel;
+} Kernels;
+typedef struct
+{
+    cl_event addFEvent;
+    cl_event subtractFEvent;
+    cl_event crossFEvent;
+    cl_event divideFEvent;
+    cl_event dotFEvent;
+    cl_event matVecFEvent;
+    cl_event s1Write;
+    cl_event s2Write;
+    cl_event s3Write;
+} Events;
+typedef struct
+{
+    cl_mem s1;
+    cl_mem s2;
+    cl_mem s3;
+} Buffers;
+
+// 3
+
+typedef struct
+{
+    Kernels kernels;
+    Events events;
+    Buffers buffers;
+    cl_platform_id platform;
+    cl_context context;
+    cl_device_id device;
+    cl_command_queue queue;
+    cl_program program;
+    cl_int err;
+} GPU;
+
+void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
     @brief Does the dot product of the first two matrices and stores in the third matrix
 
     @details
     Calculates the dot product of the first two matrices and stores it in the third matrix
+
+    @note
+    There is no error checking in any of this function. There will be unexpected results if the given params are not correct
 
     @param s1 The first matrix to be used in the dot product
     @param s2 The second matrix to be used in the dot product
@@ -157,14 +170,7 @@ typedef struct
     @param r The number of rows in \p s1 and \p s3
     @param c The number of columns in \p s1 and number of rows in \p s2
     @param c2 The number of columns in \p s2 and \p s3;
-
-    @}
 */
-void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
-void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
-void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
-void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
-
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 float *createShapeF(const unsigned int n, const float fill_val);
