@@ -25,18 +25,25 @@
 */
 
 /*!
+    @cond
     @brief %GPU %Kernels to perform operations
-
-    @details A list of the kernels that work on the gpu to perform operations for vectors and matrices. You never need to use this.
+    @details
+    A list of the kernels that work on the gpu to perform operations for vectors and matrices. You never need to use this.
 */
 typedef struct
 {
-    cl_kernel addFKernel /*! @brief Variable to store the kernel responsible for adding two shapes*/;
-    cl_kernel subtractFKernel /*! @brief Variable to store the kernel responsible for subtracting two shapes*/;
-    cl_kernel crossFKernel /*! @brief Variable to store the kernel responsible for crossing two matrices or multiplying two vectors*/;
-    cl_kernel divideFKernel /*! @brief Variable to store the kernel responsible for dividing two shapes*/;
-    cl_kernel dotFKernel /*! @brief Variable to store the kernel responsible for getting the dot prodcut of two matrices*/;
-    cl_kernel matVecFkernel /*! @brief Variable to store the kernel responsible for multiplying a vector by a matrix*/;
+    /*! @brief Variable to store the kernel responsible for adding two shapes*/
+    cl_kernel addFKernel;
+    /*! @brief Variable to store the kernel responsible for subtracting two shapes*/
+    cl_kernel subtractFKernel;
+    /*! @brief Variable to store the kernel responsible for crossing two matrices or multiplying two vectors*/
+    cl_kernel crossFKernel;
+    /*! @brief Variable to store the kernel responsible for dividing two shapes*/
+    cl_kernel divideFKernel;
+    /*! @brief Variable to store the kernel responsible for getting the dot prodcut of two matrices*/
+    cl_kernel dotFKernel;
+    /*! @brief Variable to store the kernel responsible for multiplying a vector by a matrix*/
+    cl_kernel matVecFkernel;
 } Kernels;
 typedef struct
 {
@@ -68,6 +75,9 @@ typedef struct
     cl_program program;
     cl_int err;
 } GPU;
+/*!
+    @endcond
+*/
 
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
