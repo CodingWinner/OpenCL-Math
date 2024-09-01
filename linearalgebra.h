@@ -24,14 +24,19 @@
     @page reference Function Reference
 */
 
+/*!
+    @brief %GPU %Kernels to perform operations
+
+    @details A list of the kernels that work on the gpu to perform operations for vectors and matrices. You never need to use this.
+*/
 typedef struct
 {
-    cl_kernel addFKernel;
-    cl_kernel subtractFKernel;
-    cl_kernel crossFKernel;
-    cl_kernel divideFKernel;
-    cl_kernel dotFKernel;
-    cl_kernel matVecFkernel;
+    cl_kernel addFKernel /*! @brief Variable to store the kernel responsible for adding two shapes*/;
+    cl_kernel subtractFKernel /*! @brief Variable to store the kernel responsible for subtracting two shapes*/;
+    cl_kernel crossFKernel /*! @brief Variable to store the kernel responsible for crossing two matrices or multiplying two vectors*/;
+    cl_kernel divideFKernel /*! @brief Variable to store the kernel responsible for dividing two shapes*/;
+    cl_kernel dotFKernel /*! @brief Variable to store the kernel responsible for getting the dot prodcut of two matrices*/;
+    cl_kernel matVecFkernel /*! @brief Variable to store the kernel responsible for multiplying a vector by a matrix*/;
 } Kernels;
 typedef struct
 {
