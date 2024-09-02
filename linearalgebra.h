@@ -366,5 +366,12 @@ void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned in
     Their is no error checking in this function.
 */
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
+    @brief Initializes the GPU struct. Must be called before any of the other functions
+*/
 void gpuInit();
+
+/*!
+    @brief Cleans up all the allocated memory in the GPU struct. Must be called before the program ends.
+*/
 void gpuClean();
