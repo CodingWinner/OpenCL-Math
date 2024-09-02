@@ -24,9 +24,8 @@
     @section vectors Vector Operations
     @ref MultiFOps
 
-    @ref matVecF()
-
     @subsection funcs Functions
+    @subsubsection groupFuncs Functions in Matrix and Vector Operations
     @ref addShapesF()
 
     @ref subtractShapesF()
@@ -35,16 +34,14 @@
 
     @ref divideShapesF()
 
+    @subsubsection otherFuncs Other Functions
+
     @ref createShapeF()
 
     @ref matVecF()
 
     @section matrices Matrix Operations
     @ref MultiFOps
-
-    @ref dotMatricesF()
-
-    @ref matVecF()
 
     @subsection mfuncs Functions
     @ref addShapesF()
