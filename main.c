@@ -175,14 +175,6 @@ void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int 
             r = 256;
         }
     }
-    else if (r < 32)
-    {
-        r = 32;
-    }
-    else if (c < 32)
-    {
-        c = 32;
-    }
     else
     {
         if (c < 32)
@@ -307,14 +299,6 @@ void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned
             r = 256;
         }
     }
-    else if (r < 32)
-    {
-        r = 32;
-    }
-    else if (c < 32)
-    {
-        c = 32;
-    }
     else
     {
         if (c < 32)
@@ -438,14 +422,6 @@ void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned in
             r = 256;
         }
     }
-    else if (r < 32)
-    {
-        r = 32;
-    }
-    else if (c < 32)
-    {
-        c = 32;
-    }
     else
     {
         if (c < 32)
@@ -568,14 +544,6 @@ void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned i
         {
             r = 256;
         }
-    }
-    else if (r < 32)
-    {
-        r = 32;
-    }
-    else if (c < 32)
-    {
-        c = 32;
     }
     else
     {
