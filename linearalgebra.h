@@ -340,6 +340,19 @@ float *createShapeF(const unsigned int n, const float fill_val);
     @param c2 This is the number of columns in the second and third matrix
     */
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
+/*!
+    @brief Multiplies a vector by a matrix
+
+    @param base_s1 Address to the matrix which will multiply the vector
+    @param base_s2 Address to the vector which will be multiplied by the matrix
+    @param base_s3 Address to the vector which will store the result
+    @param r Number of elements in the vector and the number of rows in the matrix
+    @param c Number of columns in the matrix
+
+    @remarks
+    The vector at base_s3 must be allocated the correct space prior to this function being called.
+    Their is no error checking in this function.
+*/
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void gpuInit();
 void gpuClean();
