@@ -5,7 +5,7 @@
     @author Ekansh Jain
 
     @details
-    Basic functions to use matrices and vectors in C for things like A.I. and graphics. This project uses OpenCL for maximum efficiency
+    Basic functions to use matrices and vectors in C for things like A.I. and graphics. This project uses OpenCL for maximum efficiency. This may not work on different devices because of GPU compatibility.
 
     @file linearalgebra.h
 */
@@ -60,8 +60,6 @@
     @ref dotMatricesF()
 
     @ref matVecF()
-
-    @section kernels Operation Kernels
 */
 
 /*!
