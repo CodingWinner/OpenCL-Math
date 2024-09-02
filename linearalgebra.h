@@ -50,6 +50,16 @@
 
 /*!
     @page reference Function References
+
+    @ref addShapesF()
+
+    @ref subtractShapesF()
+
+    @ref createShapesF()
+
+    @ref crossShapesF()
+
+    @ref divideShapesF()
 */
 
 /*!
