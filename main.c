@@ -112,6 +112,9 @@ const char *kernel_code =
 */
 GPU gpu;
 
+/*!
+    @brief Function to check for any OpenCL error and output the code
+*/
 void checkError()
 {
     if (gpu.err != CL_SUCCESS)
