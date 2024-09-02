@@ -17,6 +17,7 @@
     Parameters that go into the kernels in here can have one of two potential starting tags (__global or __local).
     Params that have a __global tag in this code are buffers that transport memory from the CPU to the GPU. These have been used for arrays.
     Params that have a __local tag in this code are temporary memory spaces which have only been used for the last two kernels.
+    Variables that have a __private tag are local to a single work item
     Each work group has it's own __local memory space.
     Void is the return type which should stay void since you're not returning to anything if using a gpu kernel as in this situation.
 
