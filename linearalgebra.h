@@ -153,18 +153,28 @@ typedef struct
 
     @details
     This struct contains the Kernels, Events, and Buffers struct as well as basic information about the %GPU in order for OpenCL to work
+
+    @note This should really never be changed
 */
 typedef struct
 {
+    /*! @brief The Kernels struct to use the kernels used in the program*/
     Kernels kernels;
+    /*! @brief The Events struct to use events in the program*/
     Events events;
+    /*! @brief The Buffers struct to use buffers in the program*/
     Buffers buffers;
+    /*! @brief Contains the platform which is something OpenCL needs*/
     cl_platform_id platform;
+    /*! @brief Contains the context which is also something OpenCL needs*/
     cl_context context;
-    /*! @brief Contains the device ID, in this case the id of the GPU to use in OpenCL functions*/
+    /*! @brief Contains the device ID, in this case the id of the %GPU to use in OpenCL functions*/
     cl_device_id device;
+    /*! @brief Contains the command queue for running the kernels or writing to buffers*/
     cl_command_queue queue;
+    /*! @brief Contains all the source code for the kernels: @ref kernel_code*/
     cl_program program;
+    /*! @brief The variable to store errors from OpenCL functions*/
     cl_int err;
 } GPU;
 
