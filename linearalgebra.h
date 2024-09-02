@@ -20,6 +20,8 @@
     @section vectors Vector Operations
     @ref MultiFOps
 
+    @ref matVecF()
+
     @subsection funcs Functions
     @ref addShapesF()
 
@@ -31,10 +33,14 @@
 
     @ref createShapeF()
 
+    @ref matVecF()
+
     @section matrices Matrix Operations
     @ref MultiFOps
 
     @ref dotMatricesF()
+
+    @ref matVecF()
 
     @subsection mfuncs Functions
     @ref addShapesF()
@@ -48,6 +54,8 @@
     @ref createShapeF()
 
     @ref dotMatricesF()
+
+    @ref matVecF()
 
     @section kernels Operation Kernels
 */
