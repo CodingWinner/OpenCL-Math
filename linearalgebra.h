@@ -34,6 +34,8 @@
     @section matrices Matrix Operations
     @ref MultiFOps
 
+    @ref dotMatricesF()
+
     @subsection mfuncs Functions
     @ref addShapesF()
 
@@ -44,6 +46,8 @@
     @ref divideShapesF()
 
     @ref createShapeF()
+
+    @ref dotMatricesF()
 
     @section kernels Operation Kernels
 */
@@ -324,6 +328,17 @@ float *createShapeF(const unsigned int n, const float fill_val);
 /*!
     @}
 */
+
+/*!
+    @brief This function calculates the dot product of 2 matrices
+
+    @param s1 This is the first matrix to be used in the dot product
+    @param s2 This is the second matrix to be used in the dot product
+    @param s3 This is the third matrix which will contain the dot product
+    @param r This is the number of rows in the first and third matrices
+    @param c This is the number of columns in the first matrix and the number of rows in the second matrix
+    @param c2 This is the number of columns in the second and third matrix
+    */
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void gpuInit();
