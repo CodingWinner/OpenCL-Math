@@ -11,9 +11,13 @@
     @brief Contains the source code for all the kernels that run on the gpu
 
     @details
-    This kernel_code string variable has all the code required to perform the operations on the gpu.
+    This kernel_code string variable has all the code required to perform the operations on any device of OpenCL.
     Each kernel function is specified by a __kernel tag in the beginning and ends with a line that only has a newline character.
-    The __kernel tag indicates that this runs on a specific device. The ID for that device is stored in @ref GPU.device.
+    The __kernel tag indicates that this runs on a OpenCL used device. The ID for that device is stored in @ref GPU.device.
+    Parameters that go into the kernels in here can have one of two potential starting tags (__global or __local).
+    Params that have a __global tag in this code are buffers that transport memory from the CPU to the GPU. These have been used for arrays.
+    Params that have a __local tag in this code are temporary memory spaces which have only been used for the last two kernels.
+    Each work group has their own __local memory space.
     Void is the return type which should stay void since you're not returning to anything if using a gpu kernel as in this situation.
 
     @note
