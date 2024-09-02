@@ -20,8 +20,7 @@
     @section vectors Vector Operations
     @ref MultiFOps
 
-    @ref createShapesF()
-    @subsection
+    @subsection funcs Functions
     @ref addShapesF()
 
     @ref subtractShapesF()
@@ -29,12 +28,13 @@
     @ref crossShapesF()
 
     @ref divideShapesF()
+
+    @ref createShapesF()
 
     @section matrices Matrix Operations
     @ref MultiFOps
 
-    @ref createShapesF()
-    @subsection
+    @subsection mfuncs Functions
     @ref addShapesF()
 
     @ref subtractShapesF()
@@ -42,6 +42,8 @@
     @ref crossShapesF()
 
     @ref divideShapesF()
+
+    @ref createShapesF()
 
     @section kernels Operation Kernels
 */
