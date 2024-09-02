@@ -17,6 +17,10 @@
 
     @section general General
 
+    @ref gpuInit()
+
+    @ref gpuClean()
+
     @section vectors Vector Operations
     @ref MultiFOps
 
