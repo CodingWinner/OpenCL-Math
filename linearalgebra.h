@@ -148,6 +148,12 @@ typedef struct
     */
     cl_mem s3;
 } Buffers;
+/*!
+    @brief Contains general information about the %GPU
+
+    @details
+    This struct contains the Kernels, Events, and Buffers struct as well as basic information about the %GPU in order for OpenCL to work
+*/
 typedef struct
 {
     Kernels kernels;
