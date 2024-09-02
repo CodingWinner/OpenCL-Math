@@ -7,23 +7,6 @@
 #include <CL/cl.h>
 #include <linearalgebra.h>
 
-/*!
-    @brief Contains the source code for all the kernels that run on the gpu
-
-    @details
-    This kernel_code string variable has all the code required to perform the operations on any device of OpenCL.
-    Each kernel function is specified by a __kernel tag in the beginning and ends with a line that only has a newline character.
-    The __kernel tag indicates that this runs on a OpenCL used device. The ID for that device is stored in @ref GPU.device.
-    Parameters that go into the kernels in here can have one of two potential starting tags (__global or __local).
-    Params that have a __global tag in this code are buffers that transport memory from the CPU to the GPU. These have been used for arrays.
-    Params that have a __local tag in this code are temporary memory spaces which have only been used for the last two kernels.
-    Variables that have a __private tag are local to a single work item
-    Each work group has it's own __local memory space.
-    Void is the return type which should stay void since you're not returning to anything if using a gpu kernel as in this situation.
-
-    @note
-    This variable should only be used for customizing/improving this code
-*/
 const char *kernel_code =
     "__kernel void addShapesF(__global const float *s1, __global const float *s2,\n"
     "                         __global float *s3, const unsigned int n)\n"
@@ -106,11 +89,6 @@ const char *kernel_code =
 }\n\
 ";
 
-/*!
-    @brief The variable used to access GPU information like the kernels or deviceID
-
-    @note This should only be used when creating your own gpu kernel function
-*/
 GPU gpu;
 
 /*!
@@ -126,22 +104,13 @@ void checkError()
 }
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
-    // This variable stores the original size of the shapes passed in
     const size_t old_size = sizeof(float) * r * c;
-    // This if statement monitors if the shapes are vectors as would be specified if r is equal to 1
     if (r == 1)
     {
-        // Checks if the number of columns is less than 32
         if (c < 32)
         {
-            // If it is than it will set it to 32
             c = 32;
         }
-        /* Then it checks for which power of 2 the number of columns is below.
-        Whichever power of 2 the number of columns is below, it sets the number of columns to that power of 2
-        For example if the number of columns is between 32 and 64, it will set it to 64.
-        This is useful because GPU's are usually made to calculate with powers of 2 making  it faster
-        */
         else if (c < 64 && c > 32)
         {
             c = 64;
@@ -155,7 +124,6 @@ void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int 
             c = 256;
         }
     }
-    // The same thing that happens with r == 1 happens with c == 1 but it instead makes the number of rows to powers of 2
     else if (c == 1)
     {
         if (r < 32)
