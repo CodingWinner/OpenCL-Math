@@ -44,6 +44,7 @@
     @ref MultiFOps
 
     @subsection mfuncs Functions
+    @subsubsection groupMFuncs Functions in Matrix and Vector Operations
     @ref addShapesF()
 
     @ref subtractShapesF()
