@@ -116,7 +116,7 @@ typedef struct
     */
     cl_event s1Write;
     /*!
-        @brief This event monitors writing data to the s2 buffer
+        @brief This event monitors writing data to the s2 buffer or storing results from the s2 buffer
     */
     cl_event s2Write;
     /*!
@@ -135,8 +135,17 @@ typedef struct
 */
 typedef struct
 {
+    /*!
+        @brief Buffer for storing shape 1
+    */
     cl_mem s1;
+    /*!
+        @brief Buffer for storing shape 2
+    */
     cl_mem s2;
+    /*!
+        @brief Buffer for storing shape 3
+    */
     cl_mem s3;
 } Buffers;
 typedef struct
