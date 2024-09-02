@@ -124,6 +124,15 @@ typedef struct
     */
     cl_event s3Write;
 } Events;
+/*!
+    @brief Structure for storing buffers which are used in various functions
+
+    @details
+    A buffer is basically a way to take an array from CPU memory to GPU memory
+
+    @note
+    Only add more buffers if adding operations that involve more than 3 arrays
+*/
 typedef struct
 {
     cl_mem s1;
