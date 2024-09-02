@@ -203,6 +203,9 @@ typedef struct
     This function does not have any error checking so you need to make sure that you give the right params to get the right output.
 */
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
+    @brief This function is responsible for subtracting any o two shapes, matrices or vectors
+*/
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
