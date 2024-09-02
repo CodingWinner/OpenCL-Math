@@ -222,13 +222,79 @@ typedef struct
     The shape at *base_s3 does not need to have the correct size allocated, it only needs to have some space allocated in the heap.
     This code will automatically allocate the right amount of space for the shape at *base_s3.
     This function does not have any error checking so you need to make sure that you give the right params to get the right output.
+    This function is very similar to a few others see below
+
+    @see subtractShapesF()
+    @see crossShapesF()
+    @see divideShapesF()
 */
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 /*!
-    @brief This function is responsible for subtracting any o two shapes, matrices or vectors
+    @brief This function is responsible for subtracting any of two shapes, matrices or vectors
+
+    @details This function will take in 2 shapes and output the third shape which will be the difference of the two shapes
+
+    @param base_s1 This is the address to the first shape which will be subtracted from by the second shape
+    @param base_s2 This is the address to the second shape which will subtract from the first shape
+    @param base_s3 This is the address to the third shape which will contain the difference of the first two shapes
+    @param r This is the amount of rows in shapes 1 and 2
+    @param c This is the amount of columns in shapes 1 and 2
+
+    @remarks
+    The shape at *base_s3 does not need to have the correct size allocated, it only needs to have some space allocated in the heap.
+    This code will automatically allocate the right amount of space for the shape at *base_s3
+    This function does not have any error checking so you need to make sure that you give the right params to get the right output.
+    This function is very similar to a few others see below
+
+    @see addShapesF()
+    @see crossShapesF()
+    @see divideShapesF()
 */
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
+    @brief This function is responsible for either crossing two matrices or multiplying two vectors
+
+    @details
+    This function will take in 2 shapes and output the third shape which will be the cross or regular product of the two shapes
+
+    @param base_s1 This is the address to the first shape which will be crossed or multiplied
+    @param base_s2 This is the address to the second shape which will be crossed or multiplied
+    @param base_s3 This is the address to the third shape which will contain the cross or regular product of the two shapes
+    @param r This is the amount of rows in shapes 1 and 2
+    @param c This is the amount of columns in shapes 1 and 2
+
+    @remarks
+    The shape at *base_s3 does not need to have the correct size allocated, it only needs to have some space allocated in the heap.
+    This code will automatically allocate the right amount of space for the shape at *base_s3
+    This function does not have any error checking so you need to make sure that you give the right params to get the right output.
+    This function is very similar to a few others see below
+
+    @see addShapesF()
+    @see crossShapesF()
+    @see divideShapesF()
+*/
 void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
+    @brief This function is responsible for dividing any of two shapes, matrices or vectors
+
+    @details This function will take in 2 shapes and output the third shape which will be the quotient of the two shapes
+
+    @param base_s1 This is the address to the first shape which will be the dividend
+    @param base_s2 This is the address to the second shape which will be the divisor
+    @param base_s3 This is the address to the third shape which will contain the quotient of the first two shapes
+    @param r This is the amount of rows in shapes 1 and 2
+    @param c This is the amount of columns in shapes 1 and 2
+
+    @remarks
+    The shape at *base_s3 does not need to have the correct size allocated, it only needs to have some space allocated in the heap.
+    This code will automatically allocate the right amount of space for the shape at *base_s3
+    This function does not have any error checking so you need to make sure that you give the right params to get the right output.
+    This function is very similar to a few others see below
+
+    @see addShapesF()
+    @see subtractShapesF()
+    @see crossShapesF()
+*/
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 float *createShapeF(const unsigned int n, const float fill_val);
 
