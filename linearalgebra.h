@@ -51,6 +51,16 @@ typedef struct
     /*! @brief Variable to store the kernel responsible for multiplying a vector by a matrix*/
     cl_kernel matVecFkernel;
 } Kernels;
+/*!
+    @brief Contains a list of events that occur in functions throughout the code
+
+    @details
+    An event is basically a way to track if an OpenCL functions is done or not.
+    This contains a list of all the events that occur that need to be tracked in order for proper code execution.
+
+    @note
+    Add/Remove events when adding to this code or customizing
+*/
 typedef struct
 {
     cl_event addFEvent;
