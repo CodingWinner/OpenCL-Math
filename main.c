@@ -126,13 +126,22 @@ void checkError()
 }
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c)
 {
+    // This variable stores the original size of the shapes passed in
     const size_t old_size = sizeof(float) * r * c;
+    // This if statement monitors if the shapes are vectors as would be specified if r is equal to 1
     if (r == 1)
     {
+        // Checks if the number of columns is less than 32
         if (c < 32)
         {
+            // If it is than it will set it to 32
             c = 32;
         }
+        /* Then it checks for which power of 2 the number of columns is below.
+        Whichever power of 2 the number of columns is below, it sets the number of columns to that power of 2
+        For example if the number of columns is between 32 and 64, it will set it to 64.
+        This is useful because GPU's are usually made to calculate with powers of 2 making  it faster
+        */
         else if (c < 64 && c > 32)
         {
             c = 64;
@@ -146,6 +155,7 @@ void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int 
             c = 256;
         }
     }
+    // The same thing that happens with r == 1 happens with c == 1 but it instead makes the number of rows to powers of 2
     else if (c == 1)
     {
         if (r < 32)
