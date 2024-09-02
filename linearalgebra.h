@@ -63,14 +63,65 @@ typedef struct
 */
 typedef struct
 {
+    /*!
+        @brief Event for addition of shapes
+
+        @details
+        This event monitors when the addition kernel is done in order to make sure that s3 in @ref addShapesF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event addFEvent;
+    /*!
+        @brief Event for subtraction of shapes
+
+        @details
+        This event monitors when the subtraction kernel is done in order to make sure that s3 in @ref subtractShapesF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event subtractFEvent;
+    /*!
+        @brief Event for crossing or multiplication of shapes
+
+        @details
+        This event monitors when the crossing kernel is done in order to make sure that s3 in @ref crossShapesF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event crossFEvent;
+    /*!
+        @brief Event for division of shapes
+
+        @details
+        This event monitors when the divide kernel is done in order to make sure that s3 in @ref divideShapesF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event divideFEvent;
+    /*!
+        @brief Event for calculating the dot product of 2 matrices
+
+        @details
+        This event monitors when the dot kernel is done in order to make sure that s3 in @ref dotMatricesF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event dotFEvent;
+    /*!
+        @brief Event for kernel multiplying a vector by a matrix
+
+        @details
+        This event monitors when the matVec kernel is done in order to make sure that s3 in @ref matVecF() is getting filled with the correct values.
+        It also is responsible for making sure the kernel isn't being asked to run with two different params at the same time as that can result in unexpected behavior.
+    */
     cl_event matVecFEvent;
+    /*!
+        @brief This event monitors writing data to the s1 buffer
+    */
     cl_event s1Write;
+    /*!
+        @brief This event monitors writing data to the s2 buffer
+    */
     cl_event s2Write;
+    /*!
+        @brief This event monitors writing data to s3 to store results
+    */
     cl_event s3Write;
 } Events;
 typedef struct
