@@ -338,6 +338,10 @@ float *createShapeF(const unsigned int n, const float fill_val);
     @param r This is the number of rows in the first and third matrices
     @param c This is the number of columns in the first matrix and the number of rows in the second matrix
     @param c2 This is the number of columns in the second and third matrix
+
+    @remarks
+    There is no error checking in this function.
+    The third shape must have correctly allocated space which is sizeof(float) * r * c2
     */
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
 /*!
