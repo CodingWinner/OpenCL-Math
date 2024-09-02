@@ -34,9 +34,9 @@
 
     @ref divideShapesF()
 
-    @subsubsection otherFuncs Other Functions
-
     @ref createShapeF()
+
+    @subsubsection otherFuncs Other Functions
 
     @ref matVecF()
 
@@ -54,6 +54,8 @@
     @ref divideShapesF()
 
     @ref createShapeF()
+
+    @subsubsection otherMFuncs Other Functions
 
     @ref dotMatricesF()
 
