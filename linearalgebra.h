@@ -29,7 +29,7 @@
 
     @ref divideShapesF()
 
-    @ref createShapesF()
+    @ref createShapeF()
 
     @section matrices Matrix Operations
     @ref MultiFOps
@@ -43,7 +43,7 @@
 
     @ref divideShapesF()
 
-    @ref createShapesF()
+    @ref createShapeF()
 
     @section kernels Operation Kernels
 */
@@ -55,7 +55,7 @@
 
     @ref subtractShapesF()
 
-    @ref createShapesF()
+    @ref createShapeF()
 
     @ref crossShapesF()
 
@@ -308,6 +308,17 @@ void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned in
     @see crossShapesF()
 */
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+/*!
+    @brief This function create either a matrix or vector
+
+    @details
+    Takes in two arguments and then uses them to create a shape which is given back to the user
+
+    @param n This is the number of elements in the shape, for matrices it is row * columns, and for vectors it is just columns
+    @param fill_val This is the default value that each element in the shape should be filled with
+
+    @returns The shape with those requirements
+*/
 float *createShapeF(const unsigned int n, const float fill_val);
 
 /*!
