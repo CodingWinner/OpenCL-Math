@@ -18,6 +18,7 @@
     @section general General
 
     @section vectors Vector Operations
+    @ref MultiFOps
 
     @section matrices Matrix Operations
 
@@ -178,12 +179,39 @@ typedef struct
     cl_int err;
 } GPU;
 
+/*!
+    @defgroup MultiFOps Matrix and Vector Operations
+    @brief This topic includes all the functions that can run for both matrices and vectors
+    @{
+*/
+
+/*!
+    @brief This functions is responsible for adding any of two shapes, matrices or vectors
+
+    @details
+    This function will take in 2 shapes and output the third shape which is the sum of the two shapes
+
+    @param base_s1 This is the address to the first shape to be summed
+    @param base_s2 This is the address to the second shape to be summed
+    @param base_s3 This is the address to the third shape which will contain the sum of the other two shapes
+    @param r This is the amount of rows in shapes 1 and 2
+    @param c This is the amount of columns in shapes 1 and 2
+
+    @remarks
+    The shape at *base_s3 does not need to have the correct size allocated, it only needs to have some space allocated in the heap.
+    This code will automatically allocate the right amount of space for the shape at *base_s3.
+    This function does not have any error checking so you need to make sure that you give the right params to get the right output.
+*/
 void addShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void subtractShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void crossShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
 void divideShapesF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
+float *createShapeF(const unsigned int n, const float fill_val);
+
+/*!
+    @}
+*/
 void dotMatricesF(const float *s1, const float *s2, float *s3, const unsigned int r, const unsigned int c, const unsigned int c2);
 void matVecF(float **base_s1, float **base_s2, float **base_s3, unsigned int r, unsigned int c);
-float *createShapeF(const unsigned int n, const float fill_val);
 void gpuInit();
 void gpuClean();
