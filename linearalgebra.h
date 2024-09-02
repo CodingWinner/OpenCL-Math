@@ -69,13 +69,21 @@
 
     @ref addShapesF()
 
-    @ref subtractShapesF()
-
     @ref createShapeF()
 
     @ref crossShapesF()
 
     @ref divideShapesF()
+
+    @ref dotMatricesF()
+
+    @ref gpuClean()
+
+    @ref gpuInit()
+
+    @ref matVecF()
+
+    @ref subtractShapesF()
 */
 
 /*!
