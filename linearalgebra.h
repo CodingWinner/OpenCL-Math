@@ -25,13 +25,14 @@
 */
 
 /*!
-    @page reference Function Reference
+    @page reference Function References
 */
 
 /*!
-    @brief %GPU %Kernels to perform operations
+    @brief %GPU kernels to perform operations
     @details
-    A list of the kernels that work on the gpu to perform operations for vectors and matrices. You never need to use this.
+    A list of the kernels that work on the gpu to perform operations for vectors and matrices.
+    You never need to use this unless adding your own kernels.
 */
 typedef struct
 {
